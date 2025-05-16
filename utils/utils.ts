@@ -8,6 +8,27 @@ export const formatDate = (isoDate: string): string => {
     .padStart(2, "0")}/${date.getFullYear()}`;
 };
 
+export const convertBithday = (birthday: string): string => {
+  try {
+    const arr = birthday.split('-');
+    return `${arr[2]}/${arr[1]}/${arr[0]}`;
+  } catch (error) {
+    console.log(error);
+    return "N/A";
+  }
+}
+
+export const convertPersonGender = (gender: number): string => {
+  switch(gender) {
+    case 1:
+      return 'Female';
+    case 2: 
+      return 'Male';
+    default:
+      return 'Unknown'
+  }
+}
+
 // export const groupSavedMoviesByDate = (savedMovied: SavedMovie[]) => {
 //   try {
 //     const groups = [];

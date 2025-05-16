@@ -1,4 +1,4 @@
-import { MovieDetails, MovieVideo } from "@/interfaces/interfaces";
+import { MovieCredit, MovieDetails, MovieVideo } from "@/interfaces/interfaces";
 
 export const TMDB_CONFIG = {
   BASE_URL: "https://api.themoviedb.org/3",
@@ -167,6 +167,48 @@ export const fetchCast = async (movieId: string) => {
     if (!response.ok) throw new Error("Failed to fetch movie credit");
     const data = await response.json();
     return data.cast;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export const fetchPerson = async (personId: string) => {
+  try {
+    const response = await fetch(`${TMDB_CONFIG.BASE_URL}/person/${personId}`, {
+      method: "GET",
+      headers: TMDB_CONFIG.headers,
+    });
+
+    if (!response.ok) throw new Error("Failed to fetch movie credit");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export const fetchMovieCredits = async (personId: string) => {
+  try {
+    const response = await fetch(
+      `${TMDB_CONFIG.BASE_URL}/person/${personId}/movie_credits`,
+      {
+        method: "GET",
+        headers: TMDB_CONFIG.headers,
+      }
+    );
+
+    if (!response.ok) throw new Error("Failed to fetch movie credits");
+    const data = await response.json();
+    const arr: number[] = [];
+    return data.cast.filter((cast: MovieCredit) => {
+      if (arr.indexOf(cast.id) === -1) {
+        arr.push(cast.id);
+        return true;
+      }
+      return false;
+    });
   } catch (error) {
     console.log(error);
     throw error;
