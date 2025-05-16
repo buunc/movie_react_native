@@ -134,3 +134,22 @@ export const fetchGenres = async () => {
     throw error;
   }
 };
+
+export const fetchReviews = async (movieId: string) => {
+  try {
+    const response = await fetch(
+      `${TMDB_CONFIG.BASE_URL}/movie/${movieId}/reviews`,
+      {
+        method: "GET",
+        headers: TMDB_CONFIG.headers,
+      }
+    );
+
+    if (!response.ok) throw new Error("Failed to fetch movie reviews");
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};

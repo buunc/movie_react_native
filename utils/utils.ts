@@ -1,6 +1,8 @@
 // import { SavedMovie } from "@/interfaces/interfaces";
 
-export const formatDate = (date: Date): string => {
+export const formatDate = (isoDate: string): string => {
+  const date = new Date(isoDate);
+  if (isNaN(date.getTime())) return 'N/A';
   return `${date.getDate().toString().padStart(2, "0")}/${(date.getMonth() + 1)
     .toString()
     .padStart(2, "0")}/${date.getFullYear()}`;

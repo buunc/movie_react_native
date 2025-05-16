@@ -3,6 +3,7 @@ import MovieDetail from "@/components/MovieDetail";
 import MovieInfo from "@/components/MovieInfo";
 import Recommendations from "@/components/Recommendations";
 import Similar from "@/components/Similar";
+import Review from "@/components/Review";
 import { icons } from "@/constants/icons";
 import { fetchMovieDetails } from "@/services/api";
 import { updateSearchCount } from "@/services/appwrite";
@@ -33,7 +34,7 @@ const MovieDetails = () => {
     }
   }, [movie]);
 
-  if (error || !movie) {
+  if (error) {
     return (
       <Text className="text-red-500 text-center mt-4">
         Failed to load movie.
@@ -41,7 +42,7 @@ const MovieDetails = () => {
     );
   }
 
-  if (loading) {
+  if (loading || !movie) {
     return (
       <ActivityIndicator
         size="large"
@@ -95,6 +96,7 @@ const MovieDetails = () => {
           />
           <Similar id={id as string} />
           <Recommendations id={id as string} />
+          <Review id={id as string} />
         </View>
       </ScrollView>
 

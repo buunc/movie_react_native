@@ -108,6 +108,23 @@ interface MovieVideo {
   id: string;
 }
 
+interface Review {
+  author: string;
+  content: string;
+  created_at: string;
+  id: string;
+  updated_at: string;
+  url: string;
+  author_details: ReviewAuthor;
+}
+
+interface ReviewAuthor {
+  name: string;
+  username: string;
+  avatar_path: string;
+  rating: number | null;
+}
+
 export type AppwriteSession = Models.Session;
 
 export type AppwriteUser = Models.User<Models.Preferences>;

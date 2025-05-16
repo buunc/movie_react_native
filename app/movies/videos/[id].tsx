@@ -3,6 +3,7 @@ import MovieDetail from "@/components/MovieDetail";
 import MovieInfo from "@/components/MovieInfo";
 import MovieVideos from "@/components/MovieVideos";
 import Recommendations from "@/components/Recommendations";
+import Review from "@/components/Review";
 import Similar from "@/components/Similar";
 import { fetchMovieDetails } from "@/services/api";
 import { useFetch } from "@/services/useFetch";
@@ -18,7 +19,7 @@ const Videos = () => {
     error,
   } = useFetch(() => fetchMovieDetails(id as string));
 
-  if (error || !movie) {
+  if (error) {
     return (
       <Text className="text-red-500 text-center mt-4">
         Failed to load movie.
@@ -26,7 +27,7 @@ const Videos = () => {
     );
   }
 
-  if (loading) {
+  if (loading || !movie) {
     return (
       <ActivityIndicator
         size="large"
@@ -75,6 +76,7 @@ const Videos = () => {
           />
           <Similar id={id as string} />
           <Recommendations id={id as string} />
+          <Review id={id as string} />
         </View>
       </ScrollView>
       <BackButton />
