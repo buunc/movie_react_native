@@ -1,50 +1,30 @@
-# Welcome to your Expo app 👋
+# This project is based on the JavaScript Mastery movie project with additional functionality
+Original project <a href="https://www.youtube.com/watch?v=f8Z9JyB2EIE">here</a><br /><br />
+## Additional functionality<br />
+_ Auth using Appwrite<br />
+_ Logout, change user's name and password<br />
+_ Search by genres<br />
+_ Add and remove movies from saved list<br />
+_ Show similar movies and recommendations movies in details page<br />
+_ Add videos page so you can watch videos<br />
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Preview
+![Image](https://github.com/user-attachments/assets/3a86c3af-4b1b-43f3-8839-3042a6ab4ad2)
 
-## Get started
+![Image](https://github.com/user-attachments/assets/65e5f7e3-fa2e-4ced-9f21-a0c5fbc85ae2)
 
-1. Install dependencies
+![Image](https://github.com/user-attachments/assets/813aed7a-757a-40b1-a958-36144ee4e95b)
 
-   ```bash
-   npm install
-   ```
+![Image](https://github.com/user-attachments/assets/1b457745-3b56-4be5-97a6-1c61ae807db4)
 
-2. Start the app
+![Image](https://github.com/user-attachments/assets/ea476610-889e-4f87-847a-ed0687e0a5e6)
 
-   ```bash
-   npx expo start
-   ```
+![Image](https://github.com/user-attachments/assets/d0711016-a974-42c0-a907-4e2d404a5028)
 
-In the output, you'll find options to open the app in a
+![Image](https://github.com/user-attachments/assets/eb291839-9d00-4c27-aeba-23c6778555fd)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+![Image](https://github.com/user-attachments/assets/54eb6461-a58d-488a-ae34-c4d0302f0e28)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+![Image](https://github.com/user-attachments/assets/9e9b890b-422a-457a-9d40-28a88c99ab9e)
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+![Image](https://github.com/user-attachments/assets/24ecdedd-936a-455b-9d4e-4ea07d481be2)
