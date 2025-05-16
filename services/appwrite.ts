@@ -1,3 +1,4 @@
+import { Movie, MovieDetails, SavedMovie, TrendingMovie } from "@/interfaces/interfaces";
 import { Client, Databases, Query, ID, Account } from "react-native-appwrite";
 
 const DATABASE_ID = process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID!;
@@ -138,7 +139,7 @@ export const getSavedMovies = async (
     const result = await database.listDocuments(
       DATABASE_ID,
       COLLECTION_SAVED_ID,
-      [Query.equal("user_id", user_id), Query.orderDesc("$updatedAt")]
+      [Query.equal("user_id", user_id), Query.orderDesc("created_at")]
     );
     return result.documents as unknown as SavedMovie[];
   } catch (error) {

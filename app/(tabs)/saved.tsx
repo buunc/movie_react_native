@@ -1,6 +1,12 @@
 import { useFocusEffect } from "@react-navigation/native";
 import { useState, useEffect, useCallback } from "react";
-import { Text, View, Image, FlatList, ActivityIndicator } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  FlatList,
+  ActivityIndicator,
+} from "react-native";
 import React from "react";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
@@ -12,6 +18,7 @@ import UnSaveButton from "@/components/UnSaveButton";
 import SearchBar from "@/components/SearchBar";
 import { unSaveMovie } from "@/services/appwrite";
 import Toast from "react-native-toast-message";
+import { SavedMovie } from "@/interfaces/interfaces";
 
 const Saved = () => {
   const { user } = useAuth();
@@ -34,7 +41,7 @@ const Saved = () => {
 
   const handleRemove = async (movie_id: number) => {
     try {
-      await unSaveMovie(movie_id, user.$id); // call Appwrite to delete
+      await unSaveMovie(movie_id, user.$id);
       setMovies((prev) => prev.filter((movie) => movie.movie_id !== movie_id));
       setSearchMovie((prev) =>
         prev.filter((movie) => movie.movie_id !== movie_id)
@@ -52,14 +59,15 @@ const Saved = () => {
   };
 
   useEffect(() => {
-    if (data) {
+    if (data && data.length > 0) {
       setMovies(data);
       setSearchMovie(data);
     }
   }, [data]);
 
   useEffect(() => {
-    setSearchMovie(handleSearchMovies(searchQuery));
+    const result = handleSearchMovies(searchQuery);
+    setSearchMovie(result);
   }, [searchQuery]);
 
   useFocusEffect(

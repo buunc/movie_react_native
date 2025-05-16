@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import FormInput from "@/components/FormInput";
 import React from "react";
 import { images } from "@/constants/images";
@@ -24,12 +18,16 @@ const signup = () => {
   const handleSubmit = () => {
     signup({ email, password, name });
   };
-  
-  if (session) return <Redirect href="/" />
+
+  if (session) return <Redirect href="/" />;
   return (
     <View className="flex-1 bg-primary">
       <Image source={images.bg} className="absolute w-full z-0" />
-      <SafeAreaView className="flex-1 flex-col items-center justify-center px-5 gap-5">
+      <ScrollView
+        className="flex-1 px-5 gap-5"
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ minHeight: "100%",  rowGap: 16 }}
+      >
         <View className="flex-col items-center justify-center">
           <Image source={icons.logo} className="w-12 h-10 mt-20 mb-3 mx-auto" />
           <Text className="text-5xl text-accent font-bold">MovieFlix</Text>
@@ -66,12 +64,12 @@ const signup = () => {
           <Text>Register</Text>
         </TouchableOpacity>
         <Text className="text-white">
-          Already have an account? {" "}
-          <Link href="/signup" className="text-accent">
+          Already have an account?{" "}
+          <Link href="/signin" className="text-accent">
             Log In now!
           </Link>
         </Text>
-      </SafeAreaView>
+      </ScrollView>
     </View>
   );
 };

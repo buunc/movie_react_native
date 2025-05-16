@@ -1,4 +1,4 @@
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 import { useAuth } from "@/context/AuthContext";
 import { Link, RelativePathString } from "expo-router";
@@ -19,7 +19,7 @@ const ProfileInfo = ({ href, value }: ProfileInfoProp) => (
 );
 
 const Profile = () => {
-  const { user, signout, verify } = useAuth();
+  const { user, signout } = useAuth();
   return (
     <View className="flex-1 bg-primary">
       <Image
@@ -40,14 +40,14 @@ const Profile = () => {
           href={"profile/changepassword" as RelativePathString}
           value="Change Password"
         />
-        {!user.emailVerification && (
+        {/* {!user.emailVerification && (
           <TouchableOpacity
             className="bg-accent rounded-lg py-3.5 flex flex-row items-center justify-center w-full"
             onPress={verify}
           >
             <Text>Verify Email</Text>
           </TouchableOpacity>
-        )}
+        )} */}
         <TouchableOpacity
           className="bg-accent rounded-lg py-3.5 flex flex-row items-center justify-center w-full"
           onPress={signout}

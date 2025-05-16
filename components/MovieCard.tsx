@@ -2,13 +2,17 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
 import { icons } from "@/constants/icons";
+import { Movie } from "@/interfaces/interfaces";
 
 const MovieCard = ({
   id,
   poster_path,
   title,
+  name,
   vote_average,
   release_date,
+  first_air_date,
+  original_language
 }: Movie) => {
   return (
     <Link href={`/movies/${id}`} asChild>
@@ -24,7 +28,7 @@ const MovieCard = ({
         />
 
         <Text className="text-sm font-bold text-white mt-2" numberOfLines={1}>
-          {title}
+          {title ?? name}
         </Text>
         <View className="flex-row items-center justify-start gap-x-1">
           <Image source={icons.star} className="size-4" />
@@ -35,10 +39,10 @@ const MovieCard = ({
 
         <View className="flex-row items-center justify-between">
           <Text className="text-xs text-light-300 font-medium mt-1">
-            {release_date?.split("-")[0]}
+            {release_date ? release_date.split("-")[0] : first_air_date?.split("-")[0]}
           </Text>
           <Text className="text-xs font-medium text-light-300 uppercase">
-            Movie
+            {original_language}
           </Text>
         </View>
       </TouchableOpacity>

@@ -15,6 +15,7 @@ import { getTrendingMovies } from "@/services/appwrite";
 import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
 import TrendingCard from "@/components/TrendingCard";
+// import TvSeries from "@/components/TvSeries";
 
 export default function Index() {
   const router = useRouter();
@@ -32,6 +33,7 @@ export default function Index() {
   } = useFetch(() =>
     fetchMovies({
       query: "",
+      genres: "",
     })
   );
 
@@ -100,6 +102,7 @@ export default function Index() {
             </>
           </View>
         )}
+        {/* <TvSeries /> */}
       </ScrollView>
     </View>
   );

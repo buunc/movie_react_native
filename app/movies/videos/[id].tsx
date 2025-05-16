@@ -1,24 +1,15 @@
 import BackButton from "@/components/BackButton";
 import MovieDetail from "@/components/MovieDetail";
 import MovieInfo from "@/components/MovieInfo";
+import MovieVideos from "@/components/MovieVideos";
 import Recommendations from "@/components/Recommendations";
 import Similar from "@/components/Similar";
-import { icons } from "@/constants/icons";
 import { fetchMovieDetails } from "@/services/api";
-import { updateSearchCount } from "@/services/appwrite";
 import { useFetch } from "@/services/useFetch";
-import { Link, useLocalSearchParams } from "expo-router";
-import React, { useEffect } from "react";
-import {
-  ActivityIndicator,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { useLocalSearchParams } from "expo-router";
+import { ActivityIndicator, Image, ScrollView, Text, View } from "react-native";
 
-const MovieDetails = () => {
+const Videos = () => {
   const { id } = useLocalSearchParams();
 
   const {
@@ -26,12 +17,6 @@ const MovieDetails = () => {
     loading,
     error,
   } = useFetch(() => fetchMovieDetails(id as string));
-
-  useEffect(() => {
-    if (movie?.title) {
-      updateSearchCount(movie);
-    }
-  }, [movie]);
 
   if (error || !movie) {
     return (
@@ -58,14 +43,9 @@ const MovieDetails = () => {
           paddingBottom: 80,
         }}
       >
+        <MovieVideos id={id as string} />
         <MovieDetail movie={movie} />
-        <View className="flex-col items-start justify-center px-5">
-          <Link href={`/movies/videos/${id}`} className="mt-2" asChild>
-            <TouchableOpacity className="flex-row items-center justify-center bg-red-600 px-3 py-3 rounded-md gap-3">
-              <Image source={icons.play} className="size-4" />
-              <Text className="text-white font-bold">Watch Movie</Text>
-            </TouchableOpacity>
-          </Link>
+        <View className="flex-col items-start justify-center mt-5 px-5">
           <MovieInfo label="Overview" value={movie?.overview} />
           <MovieInfo
             label="Genres"
@@ -97,10 +77,9 @@ const MovieDetails = () => {
           <Recommendations id={id as string} />
         </View>
       </ScrollView>
-
       <BackButton />
     </View>
   );
 };
 
-export default MovieDetails;
+export default Videos;

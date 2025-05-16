@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Link } from "expo-router";
 import { images } from "@/constants/images";
 import MaskedView from '@react-native-masked-view/masked-view';
+import { TrendingCardProps } from "@/interfaces/interfaces";
 
 const TrendingCard = ({
   movie: { movie_id, title, poster_url },

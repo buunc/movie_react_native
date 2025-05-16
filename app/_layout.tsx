@@ -17,6 +17,7 @@ export default function RootLayout() {
           <Stack.Screen name="signup" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="movies/[id]" options={{ headerShown: false }} />
+          <Stack.Screen name="movies/videos/[id]" options={{ headerShown: false }} />
           <Stack.Screen name="profile/edit" options={{ headerShown: false }} />
           <Stack.Screen name="profile/changepassword" options={{ headerShown: false }} />
         </Stack>

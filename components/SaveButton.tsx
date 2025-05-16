@@ -5,6 +5,7 @@ import { icons } from "@/constants/icons";
 import { isMovieSaved } from "@/services/appwrite";
 import { saveMovie, unSaveMovie } from "@/services/appwrite";
 import Toast from "react-native-toast-message";
+import { MovieDetails } from "@/interfaces/interfaces";
 
 const SaveButton = (movie: MovieDetails) => {
   const { user } = useAuth();

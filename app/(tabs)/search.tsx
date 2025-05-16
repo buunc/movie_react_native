@@ -2,7 +2,6 @@ import {
   Text,
   View,
   Image,
-  ScrollView,
   ActivityIndicator,
   FlatList,
 } from "react-native";
@@ -13,11 +12,13 @@ import { useFetch } from "@/services/useFetch";
 import { fetchMovies } from "@/services/api";
 import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
+import GenresSearch from "@/components/GenresSearch";
 
 import { updateSearchCount } from "@/services/appwrite";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
 
   const {
     data: movies,
@@ -28,10 +29,16 @@ const Search = () => {
   } = useFetch(() =>
     fetchMovies({
       query: searchQuery,
+      genres: selectedGenres.join(',')
     })
   );
 
+  const applyGenresFilter = () => {
+    loadMovies();
+  };
+
   useEffect(() => {
+    setSelectedGenres([]);
     const timeoutId = setTimeout(async () => {
       if (searchQuery.trim()) {
         await loadMovies();
@@ -56,7 +63,6 @@ const Search = () => {
         className="flex-1 absolute w-full z-0"
         resizeMode="cover"
       />
-
       <FlatList
         data={movies}
         renderItem={({ item }) => <MovieCard {...item} />}
@@ -81,6 +87,7 @@ const Search = () => {
                 value={searchQuery}
                 onChangeText={(text: string) => setSearchQuery(text)}
               />
+              <GenresSearch selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} applyGenresFilter={applyGenresFilter} />
 
               {loading && (
                 <ActivityIndicator
