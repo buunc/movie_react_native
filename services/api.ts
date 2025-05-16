@@ -153,3 +153,22 @@ export const fetchReviews = async (movieId: string) => {
     throw error;
   }
 };
+
+export const fetchCast = async (movieId: string) => {
+  try {
+    const response = await fetch(
+      `${TMDB_CONFIG.BASE_URL}/movie/${movieId}/credits`,
+      {
+        method: "GET",
+        headers: TMDB_CONFIG.headers,
+      }
+    );
+
+    if (!response.ok) throw new Error("Failed to fetch movie credit");
+    const data = await response.json();
+    return data.cast;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};

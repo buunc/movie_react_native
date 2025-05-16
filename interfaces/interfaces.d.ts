@@ -125,6 +125,21 @@ interface ReviewAuthor {
   rating: number | null;
 }
 
+interface Cast {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  cast_id: InteractionManagerStatic;
+  character: string;
+  credit_id: string;
+  order: integer;
+}
+
 export type AppwriteSession = Models.Session;
 
 export type AppwriteUser = Models.User<Models.Preferences>;

@@ -3,7 +3,8 @@ import MovieDetail from "@/components/MovieDetail";
 import MovieInfo from "@/components/MovieInfo";
 import Recommendations from "@/components/Recommendations";
 import Similar from "@/components/Similar";
-import Review from "@/components/Review";
+import Reviews from "@/components/Reviews";
+import Cast from "@/components/Cast";
 import { icons } from "@/constants/icons";
 import { fetchMovieDetails } from "@/services/api";
 import { updateSearchCount } from "@/services/appwrite";
@@ -67,6 +68,7 @@ const MovieDetails = () => {
               <Text className="text-white font-bold">Watch Movie</Text>
             </TouchableOpacity>
           </Link>
+          <Cast id={id as string} />
           <MovieInfo label="Overview" value={movie?.overview} />
           <MovieInfo
             label="Genres"
@@ -96,7 +98,7 @@ const MovieDetails = () => {
           />
           <Similar id={id as string} />
           <Recommendations id={id as string} />
-          <Review id={id as string} />
+          <Reviews id={id as string} />
         </View>
       </ScrollView>
 

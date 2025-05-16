@@ -3,8 +3,9 @@ import MovieDetail from "@/components/MovieDetail";
 import MovieInfo from "@/components/MovieInfo";
 import MovieVideos from "@/components/MovieVideos";
 import Recommendations from "@/components/Recommendations";
-import Review from "@/components/Review";
+import Reviews from "@/components/Reviews";
 import Similar from "@/components/Similar";
+import Cast from "@/components/Cast";
 import { fetchMovieDetails } from "@/services/api";
 import { useFetch } from "@/services/useFetch";
 import { useLocalSearchParams } from "expo-router";
@@ -47,6 +48,7 @@ const Videos = () => {
         <MovieVideos id={id as string} />
         <MovieDetail movie={movie} />
         <View className="flex-col items-start justify-center mt-5 px-5">
+          <Cast id={id as string} />
           <MovieInfo label="Overview" value={movie?.overview} />
           <MovieInfo
             label="Genres"
@@ -76,7 +78,7 @@ const Videos = () => {
           />
           <Similar id={id as string} />
           <Recommendations id={id as string} />
-          <Review id={id as string} />
+          <Reviews id={id as string} />
         </View>
       </ScrollView>
       <BackButton />
