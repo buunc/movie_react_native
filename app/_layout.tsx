@@ -3,11 +3,8 @@ import "./globals.css";
 import { StatusBar } from "expo-status-bar";
 import { AuthProvider } from "@/context/AuthContext";
 import Toast from "react-native-toast-message";
-import { useEmailVerificationHandler } from "@/hooks/useEmailVerificationHandler";
 
 export default function RootLayout() {
-  useEmailVerificationHandler();
-
   return (
     <>
       <StatusBar hidden={true} />

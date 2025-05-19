@@ -12,6 +12,7 @@ const CastCard = ({ name, profile_path, character, id }: Cast) => {
           }}
           className="w-full h-52 rounded-lg"
           resizeMode="cover"
+          testID="cast-image"
         />
         <Text className="text-sm font-bold mt-2 text-light-200">{name}</Text>
         <Text className="text-sm text-light-200">{character}</Text>

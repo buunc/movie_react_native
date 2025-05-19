@@ -19,7 +19,7 @@ const SearchBar = ({ placeholder, onPress, value, onChangeText }: Props) => {
         tintColor="#ab8bff"
       />
       <TextInput
-        onPress={onPress}
+        onPressIn={onPress}
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}

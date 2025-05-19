@@ -180,7 +180,7 @@ export const fetchPerson = async (personId: string) => {
       headers: TMDB_CONFIG.headers,
     });
 
-    if (!response.ok) throw new Error("Failed to fetch movie credit");
+    if (!response.ok) throw new Error("Failed to fetch person");
     const data = await response.json();
     return data;
   } catch (error) {
